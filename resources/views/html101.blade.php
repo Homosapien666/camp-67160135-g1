@@ -142,6 +142,10 @@
 
 @push('scripts')
     <scripts>
-        console.log('Hello World! JS')
+        let myvar1 = 1
+        let myvar2 = "1"
+        let
+
+
     </scripts>
 @endpush
