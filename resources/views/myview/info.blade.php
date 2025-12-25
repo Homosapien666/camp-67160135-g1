@@ -1,12 +1,12 @@
 @extends('template.default')
 @section('header' , 'ตารางแม่สูตรคูณ')
-
 @section('content')
 
-    <form actiom = "/calculate" method = "post">
+
+    <form action = "/calculate" method ="post">
         @csrf
-        <?php //echo isset(); ?>
-        <input class = "from-control" name = "mynumber" type="number" >
+        <?php //echo isset($_GET['mynumber']) ? $_GET['mynumber'] : " " ; ?>
+        <input class = "form-control" name = "mynumber" type = "number">
         <br>
         <button class = "btn btn-success">บันทึก</button>
     </form>
