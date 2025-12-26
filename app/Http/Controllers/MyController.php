@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-<?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -37,7 +35,7 @@ class MyController extends Controller
     {
         $data = [
             'fname'    => $req->fname,
-            'Sname'    => $req->Sname,
+            'Sname'    => $req->name,
             'birthday' => $req->birthday,
             'gender'   => $req->gender,
             'address'  => $req->address,

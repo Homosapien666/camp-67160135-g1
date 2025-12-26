@@ -13,3 +13,5 @@ Route ::get('/se', function(){
 Route::get('/mycontroller', [App\Http\Controllers\MyController::class,'index']);
 Route::get('/calcilate' , [App\Http\Controllers\MyController::class,'info']);
 Route::post('/calcilate' , [App\Http\Controllers\MyController::class,'calculate']);
+Route::post('/submitForm' , [App\Http\Controllers\MyController::class,'submitForm']);
+Route::resource('/flights', App\Http\Controller\FlightController::class);
