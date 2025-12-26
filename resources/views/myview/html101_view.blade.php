@@ -9,23 +9,23 @@
     <li>วันเกิด: {{ $data['birthday'] }}</li>
     <li>เพศ: {{ $data['gender'] }}</li>
     <li>ที่อยู่: {{ $data['address'] }}</li>
-
-    <li>แนวเพลง:
-        {{ isset($data['music']) ? implode(', ', $data['music']) : '-' }}
-    </li>
-
+    <li>
+    แนวเพลง:
+    @if (is_array($data['music']))
+        {{ implode(', ', $data['music']) }}
+    @else
+        {{ $data['music'] }}
+    @endif
+</li>
     <li>สีที่ชอบ:
         <span style="
+            display:inline-block;
             width:20px;
             height:20px;
-            display:inline-block;
             background-color: {{ $data['favcolor'] }};
-            border:1px solid #000;
+            border:1px solid #ef6666ff;
+            vertical-align:middle;
         "></span>
-    </li>
-
-    <li>ยินยอม:
-        {{ isset($data['agree']) ? 'ยินยอม' : 'ไม่ยินยอม' }}
     </li>
 </ul>
 @endsection
