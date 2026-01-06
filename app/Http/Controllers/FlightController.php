@@ -12,8 +12,8 @@ class FlightController extends Controller
      */
     public function index()
     {
-        $deta['flight'] = Flight::all();
-        return view('flights.index');
+        $data['flight'] = Flight::all();
+        return view('flights.index' , $data);
     }
 
     /**
@@ -32,11 +32,12 @@ class FlightController extends Controller
         $flight = new Flight;
         $flight->name = $request->input('name');
         $flight->airline = $request->iput('airline');
-        $flight->number_of_seats = $request->input;
-        $flight->price = $request->input('p');
+        $flight->number_of_seats = $request->input('number_of_seats');
+        $flight->price = $request->input('price');
+        $flight->save();
 
+        return redirect('/flights');
 
-        print_r($request->input());
     }
 
     /**
@@ -53,6 +54,9 @@ class FlightController extends Controller
     public function edit(string $id)
     {
         //
+        $data['flight_update'] = Flight::find($id);
+        $data['flight'] = Flight::all();
+        return view('flights.update' , $data);
     }
 
     /**

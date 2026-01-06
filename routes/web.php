@@ -15,3 +15,4 @@ Route::get('/mycontroller' , [App\Http\Controllers\MyController::class , 'index'
 Route::get('/calculate' , [App\Http\Controllers\MyController::class , 'info']);
 Route::post('/calculate' , [App\Http\Controllers\MyController::class , 'calculate']);
 Route::post('/submitForm' , [App\Http\Controllers\MyController::class , 'submitForm']);
+Route::resource('/flights',App\Http\Controllers\FlightController::class);
