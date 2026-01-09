@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Pokedex;
 
 class PokedexController extends Controller
 {
@@ -11,7 +12,8 @@ class PokedexController extends Controller
      */
     public function index()
     {
-        //
+        $data['pokedex'] = Pokedex::all();
+        return view('pokedexs.index', $data);
     }
 
     /**
@@ -27,7 +29,19 @@ class PokedexController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $Pokedex = new Pokedex;
+        $Pokedex->name =  $request->input('name');
+        $Pokedex->type =  $request->input('type');
+        $Pokedex->species =  $request->input('species');
+        $Pokedex->height =  $request->input('height');
+        $Pokedex->weight =  $request->input('weight');
+        $Pokedex->hp =  $request->input('hp');
+        $Pokedex->attack =  $request->input('attack');
+        $Pokedex->defense =  $request->input('defense');
+        $Pokedex->image_url =  $request->input('image_url');
+        $Pokedex->save();
+
+        return redirect('/pokedexs');
     }
 
     /**
@@ -35,7 +49,8 @@ class PokedexController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $pokedex = Pokedex::findOrFail($id);
+        return view('pokedexs.show', compact('pokedex'));
     }
 
     /**
@@ -43,7 +58,10 @@ class PokedexController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data['pokedex_update'] = Pokedex::find($id);
+        $data['pokedex'] = Pokedex::all();
+
+        return view('pokedexs.update', $data);
     }
 
     /**
@@ -51,7 +69,19 @@ class PokedexController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $Pokedex = Pokedex::find($id);
+        $Pokedex->name =  $request->input('name');
+        $Pokedex->type =  $request->input('type');
+        $Pokedex->species =  $request->input('species');
+        $Pokedex->height =  $request->input('height');
+        $Pokedex->weight =  $request->input('weight');
+        $Pokedex->hp =  $request->input('hp');
+        $Pokedex->attack =  $request->input('attack');
+        $Pokedex->defense =  $request->input('defense');
+        $Pokedex->image_url =  $request->input('image_url');
+        $Pokedex->save();
+
+        return redirect('/pokedexs');
     }
 
     /**
@@ -60,5 +90,8 @@ class PokedexController extends Controller
     public function destroy(string $id)
     {
         //
+        $Pokedex = Pokedex::find($id) ;
+        $Pokedex->delete();
+        return redirect('/pokedexs');
     }
 }
